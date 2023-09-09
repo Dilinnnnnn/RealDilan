@@ -1,10 +1,18 @@
-CREATE TABLE IF NOT EXISTS NuevaTabla AS
+-- Crear una nueva tabla llamada TablaGeneral
+CREATE TABLE IF NOT EXISTS TablaGeneral (
+    Usuario VARCHAR(30),
+    Coordenada VARCHAR(30),
+    Tipo VARCHAR(30),
+    Arsenal VARCHAR(30),
+    Dia VARCHAR(30)
+);
 SELECT 
-    p.ID_POSTRE AS IDUsuario,
-    lc.NOMBRE AS TipoCoordenada,
-    lc.UBICACION AS Coordenada,
-    c.NOMBRE AS Arsenal,
-    p.NOMBRE AS Dia
-FROM POSTRE p
-LEFT JOIN COMIDAS c ON p.ID_COMIDAS = c.ID_COMIDAS
-LEFT JOIN LOCAL_COMIDAS lc ON c.ID_LCOMIDAS = lc.ID_LCOMIDAS;
+    C.usuarioId AS Usuario,
+    C.Geoposicion AS Coordenada,
+    CT.Tipo AS Tipo,
+    A.ArsenalTipo AS Arsenal,
+    H.Dia AS Dia
+FROM DR_COORDENADA C
+LEFT JOIN DR_COORDENADATIPO CT ON C.usuarioId = CT.Id
+LEFT JOIN DR_ARSENAL A ON CT.Id = A.Id
+LEFT JOIN DR_HORARIOS H ON A.Id = H.Id;

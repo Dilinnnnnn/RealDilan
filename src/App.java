@@ -3,6 +3,7 @@
  * Esta es la clase principal de la aplicación.
  * Se encarga de coordinar la ejecución de diferentes partes del programa.
  */
+import BussinesLogic.TablaGeneral;
 import BussinesLogic.Tablas;
 import DTO.Arsenal;
 import DTO.CoordenadaTipo;
@@ -61,5 +62,6 @@ public class App {
         System.out.println("\n\t -Horarios...");
         Thread.sleep(1000);
         Horarios.main(args);
+        TablaGeneral.main(args);
     }
 }
