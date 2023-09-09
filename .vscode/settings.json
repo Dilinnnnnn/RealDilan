@@ -7,5 +7,15 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\ALVARO\\Downloads\\DeberTablasSql\\lib\\sqlite-jdbc-3.40.0.0.jar"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.unotation": true
+    },
+    "bigUML.hideUnotation": true
 }
