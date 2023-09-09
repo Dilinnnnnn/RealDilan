@@ -17,7 +17,7 @@ public class queryi {
                         Statement statement = conn.createStatement();
 
                         // Query para crear la tabla DR_USER y agregar registros
-                        String createUserTable = "CREATE TABLE DR_USER ("
+                        String createUserTable = "CREATE TABLE IF NOT EXISTS DR_USER ("
                                         + "UserId INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         + "NameUser VARCHAR(30) NOT NULL, "
                                         + "PasswordUser VARCHAR(8) NOT NULL)";
@@ -35,22 +35,22 @@ public class queryi {
                                         + "FOREIGN KEY(UserId) REFERENCES DR_USER(UserId))";
 
                         // Query para crear la tabla DR_COORDENADA
-                        String createCoordenadaTable = "CREATE TABLE DR_COORDENADA ("
+                        String createCoordenadaTable = "CREATE TABLE IF NOT EXISTS DR_COORDENADA ("
                                         + "usuarioId INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         + "Geoposicion VARCHAR(30) NOT NULL)";
 
                         // Query para crear la tabla DR_COORDENADATIPO
-                        String createCoordenadaTipoTable = "CREATE TABLE DR_COORDENADATIPO ("
+                        String createCoordenadaTipoTable = "CREATE TABLE IF NOT EXISTS DR_COORDENADATIPO ("
                                         + "Id INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         + "Tipo VARCHAR(30) NOT NULL)";
 
                         // Query para crear la tabla DR_ARSENAL
-                        String createArsenalTable = "CREATE TABLE DR_ARSENAL ("
+                        String createArsenalTable = "CREATE TABLE IF NOT EXISTS DR_ARSENAL ("
                                         + "Id INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         + "ArsenalTipo VARCHAR(30) NOT NULL)";
 
                         // Query para crear la tabla DR_HORARIOS
-                        String createHorariosTable = "CREATE TABLE DR_HORARIOS ("
+                        String createHorariosTable = "CREATE TABLE IF NOT EXISTS DR_HORARIOS ("
                                         + "Id INTEGER PRIMARY KEY AUTOINCREMENT, "
                                         + "Dia VARCHAR(30) NOT NULL, "
                                         + "Hora VARCHAR(30) NOT NULL)";
