@@ -8,13 +8,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Clase Coordenadas que se encarga de leer un archivo CSV y cargar los datos de
+ * geoposición en una tabla de la base de datos.
+ */
 public class Coordenadas {
 
-    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db"; // Cambia esto al URL de tu base de
-                                                                                 // datos
+    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db";
 
+    /**
+     * Método principal que realiza la lectura del archivo CSV y carga los datos de
+     * geoposición en la base de datos.
+     * 
+     * @param args Argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
-        String csvFile = "src\\Coordenadas\\RealDilan.csv"; // Cambia esto a la ruta de tu archivo CSV
+        String csvFile = "src\\Coordenadas\\RealDilan.csv";
         String line;
 
         try (Connection conn = DriverManager.getConnection(DB_URL);

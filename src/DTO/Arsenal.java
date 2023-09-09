@@ -10,14 +10,26 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Clase Arsenal que se encarga de leer un archivo CSV y cargar los datos de
+ * tipos de arsenal en una tabla de la base de datos.
+ */
 public class Arsenal {
 
-    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db";
+    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db"; // Cambia esto al URL de tu base de
+                                                                                 // datos
 
+    /**
+     * Método principal que realiza la lectura del archivo CSV y carga los datos de
+     * tipos de arsenal en la base de datos.
+     * 
+     * @param args Argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
-        String csvFile = "src\\Coordenadas\\RealDilan.csv";
+        String csvFile = "src\\Coordenadas\\RealDilan.csv"; // Cambia esto a la ruta de tu archivo CSV
         String line;
 
+        // Utilizar un conjunto (Set) para evitar duplicados
         Set<String> arsenalTipos = new HashSet<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL);

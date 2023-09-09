@@ -10,11 +10,21 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Clase CoordenadaTipo que se encarga de leer un archivo CSV y cargar los tipos
+ * de coordenadas en una tabla de la base de datos.
+ */
 public class CoordenadaTipo {
 
     private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db"; // Cambia esto al URL de tu base de
                                                                                  // datos
 
+    /**
+     * Método principal que realiza la lectura del archivo CSV y carga los tipos de
+     * coordenadas en la base de datos.
+     * 
+     * @param args Argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
         String csvFile = "src\\Coordenadas\\RealDilan.csv"; // Cambia esto a la ruta de tu archivo CSV
         String line;

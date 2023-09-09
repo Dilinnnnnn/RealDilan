@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+/**
+ * La clase `Tablas` se encarga de crear las tablas de la base de datos y
+ * agregar registros iniciales si es necesario.
+ */
 public class Tablas {
         public static void main(String[] args) {
                 // Cambia la ruta de la base de datos según tu configuración
