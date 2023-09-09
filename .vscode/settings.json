@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "src",
+        "lib"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\ALVARO\\Downloads\\DeberTablasSql\\lib\\sqlite-jdbc-3.40.0.0.jar"
+    ]
+}

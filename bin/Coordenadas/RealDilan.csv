@@ -1,0 +1,11 @@
+IdUsuario;Coordenada;CoordenadaTipo;Lunes;Martes;Miercoles;Jueves;Viernes;TipoArsenal 
+x;04;Coord_East ; ; ; ; 04-08 ; ; abcd
+x;03;Coord_North; ; ; 03-06 ; ; ; abc
+x;09;Coord_North; 01-02 ; ; ; ; ; ab
+x;01;Coord_North; 01-02 ; ; ; ; ; a
+x;04;Coord_East ; ; ; ; 04-08 ; ; abcd
+x;07;Coord_North; ; ; 03-06 ; ; ; abcd
+x;00;Coord_South; ; ; ; ; ; a
+x;05;Coord_North; ; ; ; ; 05-10 ; abcdt
+x;07;Coord_North; ; ; 03-06 ; ; ; abcd
+x;01;Coord_North;01-02; ; ; ; ;a
