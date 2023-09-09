@@ -1,4 +1,5 @@
 
+import BussinesLogic.queryi;
 import DTO.Arsenal;
 import DTO.CoordenadaTipo;
 import DTO.Coordenadas;
@@ -10,6 +11,7 @@ public class App {
     private final static String DR_NOMBRECOMPLETO = "DILAN ELIAS REAL ANGULO";
 
     public static void main(String[] args) throws Exception {
+        queryi.main(args);
         loggin.main(args);
         Thread.sleep(3000);
         // Continuar con el resto del código después de la pausa

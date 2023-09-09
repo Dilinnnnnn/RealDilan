@@ -2,54 +2,54 @@ package DTO;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Horarios {
-
-    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db"; // Cambia esto al URL de tu base de
-                                                                                 // datos
+    private static final String DB_URL = "jdbc:sqlite:C:\\RealDilan\\database\\drBaseDatos.db";
 
     public static void main(String[] args) {
-        String csvFile = "src\\Coordenadas\\RealDilan.csv"; // Cambia esto a la ruta de tu archivo CSV
+        String csvFile = "C:\\RealDilan\\src\\Coordenadas\\RealDilan.csv";
         String line;
 
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-                BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                Connection conn = DriverManager.getConnection(DB_URL)) {
+            String insertSQL = "INSERT INTO DR_HORARIOS (Dia, Hora) VALUES (?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(insertSQL);
 
-            String insertHorarioSQL = "INSERT INTO DR_HORARIOS (Dia, HoraInicio, HoraFin) VALUES (?, ?, ?)";
-            PreparedStatement preparedStatementHorario = conn.prepareStatement(insertHorarioSQL);
+            // Mapear los nombres de los días en el CSV a sus valores correspondientes
+            Map<String, String> diaMapping = new HashMap<>();
+            diaMapping.put("Lunes", "Monday");
+            diaMapping.put("Martes", "Tuesday");
+            diaMapping.put("Miercoles", "Wednesday");
+            diaMapping.put("Jueves", "Thursday");
+            diaMapping.put("Viernes", "Friday");
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(";");
-                if (data.length >= 9) { // Verifica que haya suficientes campos en la línea del CSV
-                    String diaHora = data[3]; // Obtener el valor de "Dia" y "HoraInicio-HoraFin" (según la posición en
-                                              // el CSV)
+                if (data.length == 9) {
+                    String coordenada = data[1];
+                    String coordenadaTipo = data[2];
+                    String tipoArsenal = data[8];
 
-                    // Separar el valor de "Dia" y "HoraInicio-HoraFin" por el carácter "-"
-                    String[] diaHoraSplit = diaHora.split("-");
-                    if (diaHoraSplit.length == 2) {
-                        String dia = diaHoraSplit[0].trim();
-                        String[] horaSplit = diaHoraSplit[1].trim().split(" "); // Separar HoraInicio y HoraFin
-                        if (horaSplit.length == 2) {
-                            String horaInicio = horaSplit[0].trim();
-                            String horaFin = horaSplit[1].trim();
+                    for (int i = 3; i <= 7; i++) {
+                        String dia = diaMapping.get(data[i]);
+                        String hora = data[8];
 
-                            // Insertar los valores en la tabla DR_HORARIOS
-                            preparedStatementHorario.setString(1, dia);
-                            preparedStatementHorario.setString(2, horaInicio);
-                            preparedStatementHorario.setString(3, horaFin);
-                            preparedStatementHorario.executeUpdate();
+                        if (dia != null && !hora.isEmpty()) {
+                            preparedStatement.setString(1, dia);
+                            preparedStatement.setString(2, hora);
+                            preparedStatement.executeUpdate();
                         }
                     }
                 }
             }
 
-            System.out.println("Los datos de Horarios se han insertado correctamente en la tabla DR_HORARIOS.");
-        } catch (IOException | SQLException e) {
+            System.out.println("Los datos se han insertado correctamente en la tabla DR_HORARIOS.");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -34,7 +34,7 @@ public class loggin {
                 System.out.print("\n Contraseña: ");
                 String password = scanner.nextLine();
 
-                boolean loginSuccessful = loginUser(conn, username, password);
+                boolean loginSuccessful = drloginUser(conn, username, password);
 
                 if (loginSuccessful) {
                     System.out.println("Inicio de sesión exitoso.");
@@ -61,11 +61,11 @@ public class loggin {
     }
 
     // Método para iniciar sesión
-    private static boolean loginUser(Connection conn, String username, String password)
+    private static boolean drloginUser(Connection conn, String username, String password)
             throws SQLException, NoSuchAlgorithmException {
         // Encriptar la contraseña proporcionada para compararla con la almacenada en la
         // base de datos
-        String encryptedPassword = encryptPassword(password);
+        String encryptedPassword = drencryptPassword(password);
         // System.out.println(encryptedPassword);
 
         // Consultar la base de datos para verificar las credenciales
@@ -90,7 +90,7 @@ public class loggin {
     }
 
     // Método para encriptar la contraseña en MD5
-    private static String encryptPassword(String password) throws NoSuchAlgorithmException {
+    private static String drencryptPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         byte[] digest = md.digest();
