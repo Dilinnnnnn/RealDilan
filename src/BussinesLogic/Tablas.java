@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class queryi {
+public class Tablas {
         public static void main(String[] args) {
                 // Cambia la ruta de la base de datos según tu configuración
                 String dbUrl = "jdbc:sqlite:C:\\RealDilan\\database\\drBaseDatos.db";

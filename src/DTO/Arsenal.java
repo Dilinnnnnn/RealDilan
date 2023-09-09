@@ -12,14 +12,12 @@ import java.util.Set;
 
 public class Arsenal {
 
-    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db"; // Cambia esto al URL de tu base de
-                                                                                 // datos
+    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db";
 
     public static void main(String[] args) {
-        String csvFile = "src\\Coordenadas\\RealDilan.csv"; // Cambia esto a la ruta de tu archivo CSV
+        String csvFile = "src\\Coordenadas\\RealDilan.csv";
         String line;
 
-        // Utilizar un conjunto (Set) para evitar duplicados
         Set<String> arsenalTipos = new HashSet<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL);

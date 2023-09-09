@@ -1,3 +1,6 @@
+/**
+ * La clase `Horarios` se utiliza para leer un archivo CSV y poblar la tabla DR_HORARIOS en una base de datos SQLite.
+ */
 package DTO;
 
 import java.io.BufferedReader;
@@ -9,10 +12,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Horarios {
-    private static final String DB_URL = "jdbc:sqlite:C:\\RealDilan\\database\\drBaseDatos.db";
+    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db";
 
+    /**
+     * El método principal de la clase `Horarios` para leer un archivo CSV y poblar
+     * la tabla DR_HORARIOS.
+     *
+     * @param args Los argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
-        String csvFile = "C:\\RealDilan\\src\\Coordenadas\\RealDilan.csv";
+        String csvFile = "src\\Coordenadas\\RealDilan.csv";
         String line;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile));
@@ -33,11 +42,11 @@ public class Horarios {
                 if (data.length == 9) {
                     String coordenada = data[1];
                     String coordenadaTipo = data[2];
-                    String tipoArsenal = data[8];
+                    // String tipoArsenal = data[8];
 
                     for (int i = 3; i <= 7; i++) {
                         String dia = diaMapping.get(data[i]);
-                        String hora = data[8];
+                        String hora = data[1];
 
                         if (dia != null && !hora.isEmpty()) {
                             preparedStatement.setString(1, dia);

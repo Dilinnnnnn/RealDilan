@@ -1,3 +1,7 @@
+/**
+ * La clase `loggin` proporciona un mecanismo simple de inicio de sesión con encriptación de contraseñas
+ * y control de intentos de inicio de sesión.
+ */
 package UserInterface;
 
 import java.security.MessageDigest;
@@ -10,9 +14,14 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class loggin {
-    private static final String DB_URL = "jdbc:sqlite:C:\\RealDilan\\database\\drBaseDatos.db";
+    private static final String DB_URL = "jdbc:sqlite:database\\drBaseDatos.db";
     private static final int DR_MAX_LOGIN_ATTEMPTS = 3;
 
+    /**
+     * El método principal de la clase `loggin`.
+     *
+     * @param args Los argumentos de línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
         try {
             // Establecer conexión a la base de datos SQLite
@@ -60,7 +69,17 @@ public class loggin {
         }
     }
 
-    // Método para iniciar sesión
+    /**
+     * Método para iniciar sesión en la aplicación.
+     *
+     * @param conn     La conexión a la base de datos.
+     * @param username El nombre de usuario.
+     * @param password La contraseña proporcionada.
+     * @return `true` si el inicio de sesión es exitoso, `false` en caso contrario.
+     * @throws SQLException             Si ocurre un error de SQL.
+     * @throws NoSuchAlgorithmException Si no se encuentra el algoritmo de
+     *                                  encriptación.
+     */
     private static boolean drloginUser(Connection conn, String username, String password)
             throws SQLException, NoSuchAlgorithmException {
         // Encriptar la contraseña proporcionada para compararla con la almacenada en la
@@ -89,7 +108,14 @@ public class loggin {
         return false; // Credenciales incorrectas
     }
 
-    // Método para encriptar la contraseña en MD5
+    /**
+     * Método para encriptar la contraseña en MD5.
+     *
+     * @param password La contraseña a encriptar.
+     * @return La contraseña encriptada en formato hexadecimal.
+     * @throws NoSuchAlgorithmException Si no se encuentra el algoritmo de
+     *                                  encriptación.
+     */
     private static String drencryptPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
@@ -104,5 +130,4 @@ public class loggin {
 
         return hexString.toString();
     }
-
 }
